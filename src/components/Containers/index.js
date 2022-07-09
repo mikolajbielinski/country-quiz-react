@@ -1,11 +1,6 @@
 import MainScreen from './MainScreen';
 import MainScreenTextContainer from './MainScreenTextContainer';
 import IconContainer from './IconContainer';
-import QuestionContainer from './QuestionsContainer';
+import AnswerContainer from './AnswerContainer';
 
-export {
-  MainScreen,
-  MainScreenTextContainer,
-  IconContainer,
-  QuestionContainer,
-};
+export { MainScreen, MainScreenTextContainer, IconContainer, AnswerContainer };

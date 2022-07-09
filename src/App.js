@@ -5,14 +5,8 @@ import StartPage from './containers/StartPage';
 import QuestionPage from './containers/QuestionPage';
 import ResultPage from './containers/ResultPage';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import fetchCountriesData from './services/QuestionsData';
 
 function App() {
-  const data = fetchCountriesData().then(countriesArray => {
-    return countriesArray;
-  });
-  console.log(data);
-
   return (
     <Main>
       <H1>Country quiz</H1>

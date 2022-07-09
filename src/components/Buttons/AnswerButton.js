@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const QuestionButton = styled.button`
+const AnswerButton = styled.button`
   display: flex;
   align-items: center;
   gap: 4rem;
@@ -20,4 +20,4 @@ const QuestionButton = styled.button`
   }
 `;
 
-export default QuestionButton;
+export default AnswerButton;
