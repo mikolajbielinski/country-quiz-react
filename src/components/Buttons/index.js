@@ -1,3 +1,4 @@
-import GameButton from "./GameButton";
+import GameButton from './GameButton';
+import QuestionButton from './QuestionButton';
 
-export { GameButton };
+export { GameButton, QuestionButton };

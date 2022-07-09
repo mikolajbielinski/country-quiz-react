@@ -1,27 +1,27 @@
 import React from 'react';
-import { ReactComponent as PlayLogo } from '../../assets/images/play.svg';
 import {
   IconContainer,
   MainScreen,
   MainScreenTextContainer,
 } from '../../components/Containers';
+import { ReactComponent as WinnerLogo } from '../../assets/images/winner.svg';
 import { GameButton } from '../../components/Buttons';
 
-const StartPage = () => {
+const ResultPage = () => {
   return (
     <MainScreen>
       <IconContainer>
-        <PlayLogo />
+        <WinnerLogo />
       </IconContainer>
       <MainScreenTextContainer>
-        <h2>Start now</h2>
+        <h2>Results</h2>
         <p>
-          Your best score is <span>2</span>
+          You got <span>4</span> correct answers
         </p>
       </MainScreenTextContainer>
-      <GameButton bigPadding>Start</GameButton>
+      <GameButton paddingBig>Try again</GameButton>
     </MainScreen>
   );
 };
 
-export default StartPage;
+export default ResultPage;
