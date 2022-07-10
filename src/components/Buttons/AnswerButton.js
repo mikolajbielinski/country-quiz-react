@@ -1,6 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 
-const AnswerButton = styled.button`
+const StyledAnswerButton = styled.button`
   display: flex;
   align-items: center;
   gap: 4rem;
@@ -19,5 +20,14 @@ const AnswerButton = styled.button`
     color: ${props => props.theme.colors.primaryWhite};
   }
 `;
+
+const AnswerButton = ({ name, isRight, letter }) => {
+  return (
+    <StyledAnswerButton>
+      <span>{letter}</span>
+      <p>{name}</p>
+    </StyledAnswerButton>
+  );
+};
 
 export default AnswerButton;
