@@ -13,8 +13,9 @@ const QuestionPage = () => {
   const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
-    fetchCountriesData().then(response => setCountriesData(response));
-    generateRandomQuestionAndAnswer();
+    fetchCountriesData().then(response => {
+      setCountriesData(response);
+    });
   }, []);
 
   const generateRandomQuestionAndAnswer = () => {
@@ -24,13 +25,18 @@ const QuestionPage = () => {
       .fill()
       .map(() => randomNumberGenerator(249));
     const randomRightAnswer = randomCountriesIndex.at(randomNumberGenerator(3));
+    console.log(countriesData[randomRightAnswer]);
+    // if (randomQuestionType === 0) setQuestion('');
+    // `${countriesData.randomRightAnswer.capital} is the capital of`
   };
+
+  countriesData && generateRandomQuestionAndAnswer();
 
   return (
     <>
       <IconContainer rightTop>{<PlayLogo />}</IconContainer>
       <Question>
-        <span>Kumalala is the capital of</span>
+        <span>asdas</span>
       </Question>
       <AnswerContainer>
         <AnswerButton>
