@@ -6,8 +6,11 @@ import {
   MainScreenTextContainer,
 } from '../../components/Containers';
 import { GameButton } from '../../components/Buttons';
+import { useNavigate } from 'react-router-dom';
 
 const StartPage = () => {
+  const navigate = useNavigate();
+
   return (
     <MainScreen>
       <IconContainer>
@@ -19,7 +22,11 @@ const StartPage = () => {
           Your best score is <span>2</span>
         </p>
       </MainScreenTextContainer>
-      <GameButton bigPadding>Start</GameButton>
+      <GameButton
+        bigPadding
+        onClick={() => navigate('/question', { replace: true })}>
+        Start
+      </GameButton>
     </MainScreen>
   );
 };

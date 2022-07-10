@@ -5,24 +5,32 @@ import { ReactComponent as PlayLogo } from '../../assets/images/play.svg';
 import { AnswerButton, GameButton } from '../../components/Buttons';
 import Question from '../../components/Question';
 import fetchCountriesData from '../../services/QuestionsData';
+import randomNumberGenerator from '../../utils/randomNumberGenerator';
 
 const QuestionPage = () => {
   const [countriesData, setCountriesData] = useState(null);
-  const [question, setQuestion] = useState([]);
+  const [question, setQuestion] = useState({});
+  const [answers, setAnswers] = useState([]);
 
   useEffect(() => {
     fetchCountriesData().then(response => setCountriesData(response));
+    generateRandomQuestionAndAnswer();
   }, []);
 
-  console.log(countriesData);
-
-  const generateRandomQuestion = () => {};
+  const generateRandomQuestionAndAnswer = () => {
+    // We have two types of question, 0 for capital city of a country, 1 for flag of a country
+    const randomQuestionType = randomNumberGenerator(1);
+    const randomCountriesIndex = Array(4)
+      .fill()
+      .map(() => randomNumberGenerator(249));
+    const randomRightAnswer = randomCountriesIndex.at(randomNumberGenerator(3));
+  };
 
   return (
     <>
       <IconContainer rightTop>{<PlayLogo />}</IconContainer>
       <Question>
-        Kuala Lumpur is the capitakl of fsdg sadgsgg gsfdagsdg
+        <span>Kumalala is the capital of</span>
       </Question>
       <AnswerContainer>
         <AnswerButton>

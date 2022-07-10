@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const Question = styled.h2`
+  display: flex;
+  flex-direction: column;
   margin-block: 3rem;
   font-size: 2.4rem;
   font-weight: 700;
