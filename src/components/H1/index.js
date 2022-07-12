@@ -10,6 +10,10 @@ const H1 = styled.h1`
   text-transform: uppercase;
   line-height: 5.4rem;
   font-weight: 700;
+
+  @media screen and (max-width: 26.87em) {
+    font-size: 3rem;
+  }
 `;
 
 export default H1;

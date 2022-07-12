@@ -21,9 +21,19 @@ const StyledAnswerButton = styled.button`
   }
 `;
 
-const AnswerButton = ({ name, isRight, letter, onAnswer }) => {
+const AnswerButton = ({ name, isRight, letter, onAnswer, hasAnswered }) => {
+  const handleAnswer = (isRight, e) => {
+    if (hasAnswered) return;
+
+    if (!isRight) e.currentTarget.classList.add('wrongAnswer');
+
+    onAnswer(isRight);
+  };
+
   return (
-    <StyledAnswerButton onClick={onAnswer.bind(null, isRight)}>
+    <StyledAnswerButton
+      onClick={handleAnswer.bind(null, isRight)}
+      className={hasAnswered && isRight ? 'correctAnswer' : ''}>
       <span>{letter}</span>
       <p>{name}</p>
     </StyledAnswerButton>

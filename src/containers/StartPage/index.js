@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 const StartPage = () => {
   const navigate = useNavigate();
 
+  const highestScore = localStorage.getItem('highestScore') ?? 0;
+
   return (
     <MainScreen>
       <IconContainer>
@@ -19,7 +21,7 @@ const StartPage = () => {
       <MainScreenTextContainer>
         <h2>Start now</h2>
         <p>
-          Your best score is <span>2</span>
+          Your best score is <span>{highestScore}</span>
         </p>
       </MainScreenTextContainer>
       <GameButton

@@ -1,6 +1,5 @@
 import H1 from './components/H1';
 import Main from './components/Main';
-import './styles/General/general.css';
 import StartPage from './containers/StartPage';
 import QuestionPage from './containers/QuestionPage';
 import ResultPage from './containers/ResultPage';

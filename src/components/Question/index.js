@@ -11,7 +11,7 @@ const Question = styled.h2`
   color: ${props => props.theme.colors.secondary};
 
   img {
-    width: 15rem;
+    width: 10rem;
     margin-bottom: 2rem;
   }
 `;

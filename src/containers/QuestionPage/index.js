@@ -6,11 +6,17 @@ import { AnswerButton, GameButton } from '../../components/Buttons';
 import Question from '../../components/Question';
 import fetchCountriesData from '../../services/QuestionsData';
 import randomNumberGenerator from '../../utils/randomNumberGenerator';
+import { useNavigate } from 'react-router-dom';
 
 const QuestionPage = () => {
   const [question, setQuestion] = useState({});
   const [answers, setAnswers] = useState([]);
   const [countriesData, setCountriesData] = useState(null);
+  const [hasAnswered, setHasAnswered] = useState(false);
+  const [hasAnsweredRight, setHasAnsweredRight] = useState(null);
+  const [points, setPoints] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCountriesData().then(response => {
@@ -26,9 +32,12 @@ const QuestionPage = () => {
   const generateRandomQuestionAndAnswer = () => {
     // We have two types of question, 0 for capital city of a country, 1 for flag of a country
     const randomQuestionType = randomNumberGenerator(1);
+
+    // Generating random numbers, that are indexes of countries in countriesData array
     const randomCountriesArrayIndexes = Array(4)
       .fill()
       .map(() => randomNumberGenerator(249));
+
     const randomRightAnswer = randomCountriesArrayIndexes.at(
       randomNumberGenerator(3)
     );
@@ -60,8 +69,16 @@ const QuestionPage = () => {
   };
 
   const answerClickHandler = isCorrect => {
-    console.log(isCorrect);
-    generateRandomQuestionAndAnswer();
+    setHasAnswered(true);
+    if (isCorrect) setPoints(prevPoints => prevPoints + 1);
+    setHasAnsweredRight(isCorrect);
+  };
+
+  const nextButtonHandler = () => {
+    setHasAnswered(false);
+    if (hasAnsweredRight) generateRandomQuestionAndAnswer();
+    if (!hasAnsweredRight)
+      navigate('/result', { replace: true, state: { points: points } });
   };
 
   return (
@@ -80,10 +97,15 @@ const QuestionPage = () => {
             isRight={answer.isRight}
             letter={answer.letter}
             key={answer.letter}
+            hasAnswered={hasAnswered}
             onAnswer={answerClickHandler}
           />
         ))}
-        {/* <GameButton nextButton>Next</GameButton> */}
+        {hasAnswered && (
+          <GameButton nextButton onClick={nextButtonHandler}>
+            Next
+          </GameButton>
+        )}
       </AnswerContainer>
     </>
   );

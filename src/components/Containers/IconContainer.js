@@ -12,6 +12,10 @@ const IconContainer = styled.span`
   svg {
     width: 100%;
   }
+
+  @media screen and (max-width: 26.87em) {
+    width: 13rem;
+  }
 `;
 
 export default IconContainer;
