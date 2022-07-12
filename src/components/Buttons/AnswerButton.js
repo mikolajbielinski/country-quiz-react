@@ -21,9 +21,9 @@ const StyledAnswerButton = styled.button`
   }
 `;
 
-const AnswerButton = ({ name, isRight, letter }) => {
+const AnswerButton = ({ name, isRight, letter, onAnswer }) => {
   return (
-    <StyledAnswerButton>
+    <StyledAnswerButton onClick={onAnswer.bind(null, isRight)}>
       <span>{letter}</span>
       <p>{name}</p>
     </StyledAnswerButton>

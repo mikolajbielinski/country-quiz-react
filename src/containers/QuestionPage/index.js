@@ -10,14 +10,20 @@ import randomNumberGenerator from '../../utils/randomNumberGenerator';
 const QuestionPage = () => {
   const [question, setQuestion] = useState({});
   const [answers, setAnswers] = useState([]);
+  const [countriesData, setCountriesData] = useState(null);
 
   useEffect(() => {
     fetchCountriesData().then(response => {
-      generateRandomQuestionAndAnswer(response);
+      setCountriesData(response);
     });
   }, []);
 
-  const generateRandomQuestionAndAnswer = countriesData => {
+  useEffect(() => {
+    if (!countriesData) return;
+    generateRandomQuestionAndAnswer();
+  }, [countriesData]);
+
+  const generateRandomQuestionAndAnswer = () => {
     // We have two types of question, 0 for capital city of a country, 1 for flag of a country
     const randomQuestionType = randomNumberGenerator(1);
     const randomCountriesArrayIndexes = Array(4)
@@ -53,6 +59,11 @@ const QuestionPage = () => {
     setAnswers(answersArray);
   };
 
+  const answerClickHandler = isCorrect => {
+    console.log(isCorrect);
+    generateRandomQuestionAndAnswer();
+  };
+
   return (
     <>
       <IconContainer rightTop>{<PlayLogo />}</IconContainer>
@@ -69,9 +80,10 @@ const QuestionPage = () => {
             isRight={answer.isRight}
             letter={answer.letter}
             key={answer.letter}
+            onAnswer={answerClickHandler}
           />
         ))}
-        <GameButton nextButton>Next</GameButton>
+        {/* <GameButton nextButton>Next</GameButton> */}
       </AnswerContainer>
     </>
   );
