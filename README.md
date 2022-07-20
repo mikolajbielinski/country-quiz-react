@@ -1,5 +1,7 @@
 <h1>Country quiz using react</h1>
 
+<h2>Link: https://country-quiz-react-mikolaj.netlify.app/start</h2>
+
 <h2>Tools used</h2>
 
 To create the app i used styled-components, react-router-dom v6 and rest countries API.
