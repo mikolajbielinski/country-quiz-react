@@ -1,6 +1,6 @@
 <h1>Country quiz using react</h1>
 
-<h2>Link: https://country-quiz-react-mikolaj.netlify.app/start</h2>
+<h2>Link: https://country-quiz-react-mikolaj.netlify.app</h2>
 
 
 <h2>Tools used</h2>
